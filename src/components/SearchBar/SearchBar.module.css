@@ -1,11 +1,9 @@
 header {
-  margin: 20px auto;
-  border-radius: 5px;
-  padding: 15px;
-  background: linear-gradient(to right,
-      rgba(73, 155, 234, 1) 0%,
-      rgba(73, 155, 234, 0.52) 50%,
-      rgba(32, 124, 229, 0.87) 100%);
+  padding: 10px 0 10px 0;
+    background-color: rgb(120, 221, 84);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    border-radius: 30px;
+    border-color: aquamarine;
 }
 
 .wrapper {
