@@ -1,5 +1,12 @@
-.button {
+.button { 
   display: block;
   margin: 0px auto;
   margin-bottom: 100px;
+  height: 30px;
+  width: 220px;
+  outline: 2px solid white;   
+  border-radius: 30px;   
+  color: #ffffff;
+  box-shadow: 4px 5px 12px -1px rgb(59, 33, 33);
+  background-color: rgb(46, 73, 45);
 }

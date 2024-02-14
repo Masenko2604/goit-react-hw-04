@@ -1,9 +1,9 @@
 header {
   padding: 10px 0 10px 0;
-    background-color: rgb(120, 221, 84);
+    background-color: rgb(127, 183, 124);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-    border-radius: 30px;
-    border-color: aquamarine;
+    border-radius: 30px;   
+    box-shadow: 4px 5px 12px -1px white;
 }
 
 .wrapper {
@@ -12,25 +12,29 @@ header {
   align-items: center;
 }
 
-.form {}
-
 .input {
-  outline: 2px solid white;
-  width: 350px;
+  outline: 2px solid #ffffff;
+  width: 450px;
   height: 30px;
   margin-right: 20px;
   outline: none;
   border: none;
-  border-radius: 8px;
+  border-radius: 30px;
   justify-content: baseline;
   padding-left: 8px;
-  box-shadow: 4px 5px 12px -1px rgba(3, 16, 77, 0.75);
+  color: #ffffff;
+  box-shadow: 4px 5px 12px -1px #ffffff;
+  background-color: rgb(46, 73, 45);
+ 
 }
 
-.btn {
+.btn {  
   border: none;
-  border-radius: 8px;
+  border-radius: 30px;
   width: 80px;
   height: 30px;
-  box-shadow: 4px 5px 12px -1px rgba(3, 16, 77, 0.75);
+  color: white;
+  box-shadow: 4px 5px 12px -1px #ffffff;
+  background-color: rgb(46, 73, 45);
+  
 }
