@@ -2,7 +2,8 @@ import { useId } from 'react';
 import style from './SearchBar.module.css'
 
 export const SearchBar = ({ onSubmit }) => {
-  const inputId = useId();
+  const inputId = useId();  
+  
   return (
     <header className={style.header}>
       <form onSubmit={onSubmit} className={style.form}>
@@ -15,9 +16,13 @@ export const SearchBar = ({ onSubmit }) => {
             placeholder="Search images and photos"
             className={style.input}
           />
-          <button type="submit"className={style.btn}>Search</button>
+          <button type="submit" className={style.btn}>Search</button>
+          
         </div>
+        
       </form>
+      
+      
     </header>
   );
 };
