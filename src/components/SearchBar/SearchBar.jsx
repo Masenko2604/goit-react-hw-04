@@ -1,24 +1,31 @@
-import { useId } from 'react';
-import style from './SearchBar.module.css'
+import css from './SearchBar.module.css';
+import toast from 'react-hot-toast';
 
-export const SearchBar = ({ onSubmit }) => {
-  const inputId = useId();
+export const SearchBar = ({ onSearch }) => {
+  const handleSubmit = evt => {
+    evt.preventDefault();
+
+    if (evt.target.elements.query.value.trim() === '') {
+      toast.error('Enter data in the search field');
+      return;
+    }
+    onSearch(evt.target.elements.query.value);
+    evt.target.reset();
+  };
+
   return (
-    <header className={style.header}>
-      <form onSubmit={onSubmit} className={style.form}>
-        <div className={style.wrapper}>
-          <input
-            id={inputId}
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-            className={style.input}
-          />
-          <button type="submit"className={style.btn}>Search</button>
-        </div>
-      </form>
-    </header>
+    <form onSubmit={handleSubmit} className={css.form}>
+      <input
+        type="text"
+        name="query"
+        autoComplete="off"
+        autoFocus
+        placeholder="Search images and photos"
+        className={css.inputSearch}
+      />
+      <button type="submit" className={css.btn}>
+        Search
+      </button>
+    </form>
   );
 };
-
