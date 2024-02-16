@@ -65,15 +65,15 @@ export const App = () => {
           {images.length > 0 &&
             page < totalPage &&
             (isVisible ? (
-              <MagnifyingGlass
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="magnifying-glass-loading"
-                wrapperClass="loaderMag"
-                glassColor="#c0efff"
-                color="#3d68f7"
-              />
+  <MagnifyingGlass
+  visible={isVisible}
+  height="80"
+  width="80"
+  ariaLabel="magnifying-glass-loading"
+  wrapperClass="loaderMag"
+  glassColor="#c0efff"
+  color="#3d68f7"
+/>
             ) : (
               <LoadMoreBtn onClick={handleClick} />
             ))}
