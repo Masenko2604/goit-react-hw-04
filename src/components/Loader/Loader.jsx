@@ -1,17 +1,7 @@
-import style from './Loader.module.css';
-import { Oval } from 'react-loader-spinner';
+import { InfinitySpin } from 'react-loader-spinner';
 
-export const Loader = ({ visible }) => {
+export const Loader = () => {
   return (
-    <div className={style.backdrop}>
-      <Oval
-        visible={visible}
-        height="40"
-        width="40"
-        color="#327bce"
-        secondaryColor="#154f92"
-        ariaLabel="oval-loading"
-      />
-    </div>
+    <InfinitySpin visible={true} width="200" color="#4fa94d" ariaLabel="infinity-spin-loading" />
   );
 };

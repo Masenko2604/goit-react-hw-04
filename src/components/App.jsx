@@ -1,68 +1,61 @@
-import { Toaster } from 'react-hot-toast';
-import css from './App.css';
-import { SearchBar } from './SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
+import { fetchData } from '../api';
+import { SearchBar } from './SearchBar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-import { ErrorMessage, MessageNotFound } from './ErrorMessage/ErrorMessage';
+import { LoadMore } from './LoadMoreBtn/LoadMoreBtn';
+import toast, { Toaster } from 'react-hot-toast';
+import { ErrorMessage } from './ErrorMessage/ErrorMessage';
 import { Loader } from './Loader/Loader';
-import { fetchPictures } from '../api';
-import { nanoid } from 'nanoid';
-import { LoadMoreBtn } from './LoadMoreBtn/LoadMoreBtn';
 
 export const App = () => {
-  const [pictures, setPictures] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [unsplash, setUnsplash] = useState([]);
   const [query, setQuery] = useState('');
-  const [page, setPage] = useState(1);
-  const [visualBtn, setVisualBtn] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(false);
+  const [page, setLoad] = useState(1);
+  const [show, setShow] = useState(false);
+  const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
-  const searchPictures = async newQuery => {
-    setQuery(`${nanoid()}/${newQuery}`);
-    setPage(1);
-    setPictures([]);
-    setIsEmpty(false);
+  const SearchValue = searchValue => {
+    setQuery(`${Date.now()}/${searchValue}`);
+    setUnsplash([]);
+    setLoad(1);
   };
 
-  const handleLoadMore = () => {
-    setPage(page + 1);
-  };
   useEffect(() => {
     if (query === '') {
       return;
     }
-    async function fetchData() {
+    async function ApiData() {
       try {
-        setError(false);
-        setLoading(true);
-        const { results, total_pages } = await fetchPictures(query.split('/')[1], page);
-        if (results.length === 0) {
-          setIsEmpty(true);
-          return;
+        setLoader(true);
+        const data = await fetchData(query.split('/')[1], page);
+        setUnsplash(prevData => [...prevData, ...data.results]);
+        console.log(data);
+        setShow(data.total_pages !== page);
+        if (query.split('/')[1].length === 0) {
+          toast('There are no images for this request');
         }
-        setPictures(prevPictures => [...prevPictures, ...results]);
-        setVisualBtn(total_pages !== page);
       } catch (error) {
         setError(true);
+        console.log(error);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setError(false);
+        }, 2000);
+        setLoader(false);
       }
     }
-    fetchData();
+    ApiData();
   }, [query, page]);
-
+ 
   return (
-    <div className={css.container}>
-      <header className={css.header}>
-        <SearchBar onSearch={searchPictures} />
-      </header>
+    <div>
+      <SearchBar onSubmit={SearchValue} />
+      <Toaster />
+      <ImageGallery items={unsplash} />
+      {loader && <Loader />}
+      {show && <LoadMore onLoadMore={setLoad} value={page} />}
       {error && <ErrorMessage />}
-      {pictures.length > 0 && <ImageGallery items={pictures} />}
-      {isEmpty && <MessageNotFound />}
-      {loading && <Loader />}
-      {visualBtn && <LoadMoreBtn clickBtn={handleLoadMore} />}
-      <Toaster position="bottom-center" />
     </div>
   );
 };

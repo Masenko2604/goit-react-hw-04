@@ -1,7 +1,12 @@
-import style from './LoadMoreBtn.module.css'
+import css from './LoadMoreBtn.module.css';
 
-export const LoadMoreBtn = ({onClick}) => {
-    return <button type="submit"
-        onClick={onClick}
-        className={style.button}>Load more images</button>
+export const LoadMore = ({ onLoadMore, value }) => {
+  const loadMore = () => {
+    onLoadMore(value + 1);
+  };
+  return (
+    <button className={css.btns} onClick={loadMore}>
+      LoadMore...
+    </button>
+  );
 };

@@ -1,17 +1,38 @@
 import { ImageCard } from '../ImageCard/ImageCard';
-import style from './ImageGallery.module.css';
+import { ImageModal } from '../ImageModal/ImageModal';
+import css from './ImageGallery.module.css';
+import { useState } from 'react';
+import ReactModal from 'react-modal';
+ReactModal.setAppElement('#root');
 
-export const ImageGallery = ({ images }) => {
+export const ImageGallery = ({ items }) => {
+  const [regular, setRegular] = useState(null);
+  //   let image = items.map(item => {
+  //     return item.urls.regular;
+  //   });
+  const [state, setState] = useState(false);
+
+  const handleOpenModal = regular => {
+    setState(true);
+    setRegular(regular);
+  };
+
+  const handleCloseModal = () => {
+    setState(false);
+  };
+
   return (
-    <ul className={style.list}>
-      {images.map(image => {
-        const { small, regular, alt_description: alt } = image.urls;
-        return (
-          <li key={image.id} className={style.listItem}>
-            <ImageCard small={small} alt={alt} regular={regular} />
-          </li>
-        );
-      })}
-    </ul>
+    <div>
+      <ul className={css.container}>
+        {items.map(item => {
+          return (
+            <li className={css.list} key={item.id}>
+              <ImageCard items={item} isOpen={handleOpenModal} />
+            </li>
+          );
+        })}
+      </ul>
+      <ImageModal src={regular} closetModal={handleCloseModal} value={state} />;
+    </div>
   );
 };

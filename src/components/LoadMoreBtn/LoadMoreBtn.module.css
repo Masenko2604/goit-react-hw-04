@@ -1,12 +1,11 @@
-.button { 
-  display: block;
-  margin: 0px auto;
-  margin-bottom: 100px;
-  height: 30px;
+.btns {
+  border-radius: 30px;
+  color: rgb(12, 52, 17);
+  background-color: rgb(129, 189, 123);
+  padding: 10px;
   width: 220px;
-  outline: 2px solid white;   
-  border-radius: 30px;   
-  color: #ffffff;
-  box-shadow: 4px 5px 12px -1px rgb(59, 33, 33);
-  background-color: rgb(46, 73, 45);
+  display: block;
+    margin: 0px auto;
+    margin-bottom: 100px;
+    box-shadow: rgba(5, 64, 20, 0.25) 0px 14px 28px, rgba(3, 92, 40, 0.22) 0px 10px 10px;
 }

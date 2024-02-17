@@ -1,21 +1,13 @@
-.list {
+.container {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  column-gap: 30px;
-  row-gap: 30px;
-  margin-bottom: 50px;
+  gap: 40px;
 }
 
-.listItem {
-  border-radius: 8px;
-  overflow: hidden;
-  transition: box-shadow 150ms ease-in-out, transform 0.18s ease-in-out;
+.list {
+  list-style-type: none;
+  border: 6px;
 }
-
-.listItem:hover,
-.listItem:focus {
-  box-shadow: 2px 2px 12px -1px rgba(3, 16, 77, 0.75);
-  transform: scale(1.01);
-}
+    

@@ -1,5 +1,4 @@
-import style from './ErrorMessage.module.css';
-export const ErrorMessage = ({ data }) => {
- 
-  return <p className={style.errorText}>{data}</p>
+import toast from "react-hot-toast";
+export const ErrorMessage = () => {
+  return toast.error("Oops,something went wrong, try to reload");
 };
