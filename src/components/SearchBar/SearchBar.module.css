@@ -11,24 +11,25 @@
 .searchBar {
   border-radius: 30px;
   padding: 10px;
-  background-color: rgb(187, 209, 187);
+  background-color: rgb(159, 189, 159);
   border: transparent;
-  color: #043d11;
-  border-color: rgb(13, 56, 13);
+  color: #cbdace;
+  border-color: rgb(187, 218, 187);
   width: 620px;
-  box-shadow: inset -5px -5px 10px 0px rgba(125, 238, 168, 0.5), inset 5px 5px 10px 0px rgba(125, 238, 168, 0.5);
-  transition: background-color 300ms cubic-bezier(0.3, 0.1, 0.2, 0.3);
+  box-shadow: 10px 10px 18px -2px rgb(105, 202, 123);
+    transition: transform 250ms linear;
+  }
 
-}
 
 .btns {
   background-color: rgb(187, 209, 187);
   border-radius: 30px;
   color: black;
   border-color: rgb(21, 70, 19);
-  box-shadow: inset -5px -5px 10px 0px rgba(125, 238, 168, 0.5), inset 5px 5px 10px 0px rgba(125, 238, 168, 0.5);
-  transition: background-color 300ms cubic-bezier(0.3, 0.1, 0.2, 0.3);
-}
+  box-shadow: 10px 10px 18px -2px rgb(13, 79, 25);
+    transition: transform 250ms linear;
+  }
+
 
 .btns:hover,
 .btns:focus {
