@@ -33,9 +33,10 @@ export const App = () => {
       try {
         setLoader(true);
         const data = await fetchData(query.split('/')[1], page);
+
         setUnsplash(prevData => [...prevData, ...data.results]);
         console.log(data);
-        setShow(data.total_pages !== page);
+        setShow(data.total_pages !== page && data.total_pages !== 0);
         if (query.split('/')[1].length === 0) {
           toast('There are no images for this request');
         }
