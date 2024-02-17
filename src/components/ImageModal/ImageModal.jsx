@@ -1,7 +1,7 @@
 import ReactModal from 'react-modal';
 import css from './ImageModal.module.css';
 
-export const ImageModal = ({ src, closetModal, value }) => {
+export const ImageModal = ({ src, alt, closetModal, value }) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -22,13 +22,12 @@ export const ImageModal = ({ src, closetModal, value }) => {
         style={customStyles}
       >
         <div className={css.container}>
-          <img className={css.image} src={src} />
+          <img className={css.image} src={src} alt={alt} />
           <button type="button" className={css.button} onClick={closetModal}>
             Close Modal
           </button>
         </div>
       </ReactModal>
     </div>
-   
   );
 };

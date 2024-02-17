@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { fetchData } from '../api';
 import { SearchBar } from './SearchBar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-import { LoadMore } from './LoadMoreBtn/LoadMoreBtn';
+import { LoadMoreBtn } from './LoadMoreBtn/LoadMoreBtn';
 import toast, { Toaster } from 'react-hot-toast';
 import { ErrorMessage } from './ErrorMessage/ErrorMessage';
 import { Loader } from './Loader/Loader';
+import { ImageModal } from './ImageModal/ImageModal';
 
 export const App = () => {
   const [unsplash, setUnsplash] = useState([]);
@@ -14,6 +15,9 @@ export const App = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [regular, setRegular] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [alt, setAlt] = useState(null);
 
   const SearchValue = searchValue => {
     setQuery(`${Date.now()}/${searchValue}`);
@@ -50,14 +54,27 @@ export const App = () => {
   const handleClickLoadMore = () => {
     setPage(page + 1);
   };
+
+  const handleOpenModal = (regular, alt) => {
+    setShowModal(true);
+    setRegular(regular);
+    setAlt(alt);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   return (
     <div>
       <SearchBar onSubmit={SearchValue} />
       <Toaster />
-      <ImageGallery items={unsplash} />
+      <ImageGallery items={unsplash} handleClickImage={handleOpenModal} />
       {loader && <Loader />}
-      {show && <LoadMore onLoadMore={handleClickLoadMore} />}
+      {show && <LoadMoreBtn onLoadMore={handleClickLoadMore} />}
       {error && <ErrorMessage />}
+      {showModal && (
+        <ImageModal alt={alt} src={regular} closetModal={handleCloseModal} value={showModal} />
+      )}
     </div>
   );
 };

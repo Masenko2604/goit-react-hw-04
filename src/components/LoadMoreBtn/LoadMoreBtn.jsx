@@ -1,7 +1,6 @@
 import css from './LoadMoreBtn.module.css';
 
-export const LoadMore = ({ onLoadMore }) => {
-  
+export const LoadMoreBtn = ({ onLoadMore }) => {
   return (
     <button className={css.btns} onClick={onLoadMore}>
       LoadMore...

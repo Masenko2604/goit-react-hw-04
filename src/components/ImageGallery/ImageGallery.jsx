@@ -1,36 +1,20 @@
 import { ImageCard } from '../ImageCard/ImageCard';
-import { ImageModal } from '../ImageModal/ImageModal';
 import css from './ImageGallery.module.css';
-import { useState } from 'react';
 import ReactModal from 'react-modal';
 ReactModal.setAppElement('#root');
 
-export const ImageGallery = ({ items }) => {
-  const [regular, setRegular] = useState(null);
-
-  const [state, setState] = useState(false);
-
-  const handleOpenModal = regular => {
-    setState(true);
-    setRegular(regular);
-  };
-
-  const handleCloseModal = () => {
-    setState(false);
-  };
-
+export const ImageGallery = ({ items, handleClickImage }) => {
   return (
     <div>
       <ul className={css.list}>
         {items.map(item => {
           return (
             <li className={css.item} key={item.id}>
-              <ImageCard items={item} isOpen={handleOpenModal} />
+              <ImageCard items={item} onClick={handleClickImage} />
             </li>
           );
         })}
       </ul>
-      <ImageModal src={regular} closetModal={handleCloseModal} value={state} />
     </div>
   );
 };
