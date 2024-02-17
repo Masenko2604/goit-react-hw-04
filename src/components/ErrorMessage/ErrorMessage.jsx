@@ -1,4 +1,5 @@
-import toast from "react-hot-toast";
+import toast from 'react-hot-toast';
 export const ErrorMessage = () => {
-  return toast.error("Oops,something went wrong, try to reload");
+  toast.error('Oops,something went wrong, try to reload');
+  return <></>;
 };

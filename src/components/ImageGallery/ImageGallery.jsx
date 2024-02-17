@@ -7,9 +7,7 @@ ReactModal.setAppElement('#root');
 
 export const ImageGallery = ({ items }) => {
   const [regular, setRegular] = useState(null);
-  //   let image = items.map(item => {
-  //     return item.urls.regular;
-  //   });
+
   const [state, setState] = useState(false);
 
   const handleOpenModal = regular => {
@@ -32,7 +30,7 @@ export const ImageGallery = ({ items }) => {
           );
         })}
       </ul>
-      <ImageModal src={regular} closetModal={handleCloseModal} value={state} />;
+      <ImageModal src={regular} closetModal={handleCloseModal} value={state} />
     </div>
   );
 };
