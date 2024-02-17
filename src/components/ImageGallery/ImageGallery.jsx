@@ -23,10 +23,10 @@ export const ImageGallery = ({ items }) => {
 
   return (
     <div>
-      <ul className={css.container}>
+      <ul className={css.list}>
         {items.map(item => {
           return (
-            <li className={css.list} key={item.id}>
+            <li className={css.item} key={item.id}>
               <ImageCard items={item} isOpen={handleOpenModal} />
             </li>
           );

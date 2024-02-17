@@ -10,7 +10,7 @@ import { Loader } from './Loader/Loader';
 export const App = () => {
   const [unsplash, setUnsplash] = useState([]);
   const [query, setQuery] = useState('');
-  const [page, setLoad] = useState(1);
+  const [page, setPage] = useState(1);
   const [show, setShow] = useState(false);
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -18,7 +18,7 @@ export const App = () => {
   const SearchValue = searchValue => {
     setQuery(`${Date.now()}/${searchValue}`);
     setUnsplash([]);
-    setLoad(1);
+    setPage(1);
   };
 
   useEffect(() => {
@@ -47,14 +47,16 @@ export const App = () => {
     }
     ApiData();
   }, [query, page]);
- 
+  const handleClickLoadMore = () => {
+    setPage(page + 1);
+  };
   return (
     <div>
       <SearchBar onSubmit={SearchValue} />
       <Toaster />
       <ImageGallery items={unsplash} />
       {loader && <Loader />}
-      {show && <LoadMore onLoadMore={setLoad} value={page} />}
+      {show && <LoadMore onLoadMore={handleClickLoadMore} />}
       {error && <ErrorMessage />}
     </div>
   );

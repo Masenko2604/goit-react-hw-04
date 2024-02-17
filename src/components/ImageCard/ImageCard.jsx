@@ -1,10 +1,8 @@
-
 import css from './ImageCard.module.css';
 
 export const ImageCard = ({ items, isOpen }) => {
- 
   return (
-    <div>
+    <div className={css.wrapper}>
       <img
         className={css.image}
         src={items.urls.small}

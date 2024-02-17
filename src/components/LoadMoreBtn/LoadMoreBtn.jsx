@@ -1,11 +1,9 @@
 import css from './LoadMoreBtn.module.css';
 
-export const LoadMore = ({ onLoadMore, value }) => {
-  const loadMore = () => {
-    onLoadMore(value + 1);
-  };
+export const LoadMore = ({ onLoadMore }) => {
+  
   return (
-    <button className={css.btns} onClick={loadMore}>
+    <button className={css.btns} onClick={onLoadMore}>
       LoadMore...
     </button>
   );

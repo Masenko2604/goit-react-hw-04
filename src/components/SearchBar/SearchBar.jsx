@@ -1,9 +1,16 @@
+import toast from 'react-hot-toast';
+
 import css from './SearchBar.module.css';
 
 export const SearchBar = ({ onSubmit }) => {
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit(event.target.search.value);
+    const value = event.target.search.value.trim();
+    if (!value) {
+      toast.error('Input, please your query');
+      return;
+    }
+    onSubmit(value);
   };
 
   return (
